@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kulechky</title>
+<meta name="description" content="A small real-time strategy game for phones, played with marbles on a map of planets.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  /* Colours from src/game/palette.gd; fonts from Ui.font(). */
+  :root { --paper: #f4ede1; --pill: #fbf7ee; --ink: #3a352e; --muted: #6f675c; --blue: #1d5fc4; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink); background: var(--paper);
+    background-image: radial-gradient(#d9d0c0 1.2px, transparent 1.4px); background-size: 28px 28px;
+    font: 18px/1.5 Georgia, "Noto Serif", "Times New Roman", serif;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 0 16px; }
+  section { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 48px 0; }
+  .icon { width: 128px; height: 128px; filter: drop-shadow(0 6px 12px rgba(58, 53, 46, .18)); }
+  h1 { font-size: 64px; margin: 16px 0 4px; letter-spacing: -1px; }
+  .tag { font-style: italic; color: var(--muted); margin: 0 0 32px; }
+  .scroll { color: var(--muted); text-decoration: none; font-style: italic; font-size: 16px; }
+  .shot { width: min(300px, 80vw); border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 10px 30px rgba(58, 53, 46, .2); }
+  ol { text-align: left; padding-left: 1.4em; max-width: 420px; }
+  li { margin: 6px 0; }
+  .pill {
+    display: inline-block; padding: 16px 36px; border: 2px solid var(--ink); border-radius: 999px;
+    background: var(--pill); color: var(--ink); text-decoration: none; font-weight: bold; font-size: 24px;
+  }
+  .pill:active { transform: translateY(1px); }
+  .pill.off { opacity: .45; font-size: 18px; padding: 10px 24px; }
+  .small { font-size: 15px; color: var(--muted); }
+  .small a { color: inherit; }
+  h2 { font-size: 28px; margin: 0 0 12px; }
+</style>
+</head>
+<body>
+<main>
+  <section>
+    <img class="icon" src="icon.svg" alt="">
+    <h1>Kulechky</h1>
+    <p class="tag">A small strategy game of marbles and planets</p>
+    <a class="scroll" href="#play">Scroll down to play ↓</a>
+  </section>
+
+  <section>
+    <img class="shot" src="shot.png" alt="A game in progress: blue and red marbles on a map of linked planets">
+    <ol>
+      <li>Each planet makes marbles for its owner.</li>
+      <li>Send marbles along the links to take neutral and enemy planets.</li>
+      <li>A level takes from 30 seconds to a few minutes.</li>
+      <li>Play the campaign, or one new map for every day of the year.</li>
+    </ol>
+  </section>
+
+  <section id="play">
+    <h2>Play it</h2>
+    <a class="pill" href="https://github.com/markiewitch/kulechky-play/releases/latest/download/kulechky.apk">Download for Android</a>
+    <p class="small" id="version">Latest test build</p>
+    <p class="small">The first time, Android asks you to allow installs from your browser.
+      If Play Protect warns about an unknown app, tap <i>More details</i>, then <i>Install anyway</i>.
+      New versions install over the old one and keep your progress.</p>
+    <p><span class="pill off">iPhone: later</span></p>
+    <p class="small"><a href="https://github.com/markiewitch/kulechky-play/releases">All versions and what changed</a></p>
+  </section>
+</main>
+<script>
+  // Show the latest version under the button. If the GitHub API is unavailable, the default text stays.
+  fetch("https://api.github.com/repos/markiewitch/kulechky-play/releases/latest")
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(r => {
+      const day = new Date(r.published_at).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+      document.getElementById("version").textContent = `Version ${r.tag_name.replace(/^v/, "")} · ${day}`;
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>

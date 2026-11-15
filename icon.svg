@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="84 84 264 264">
+  <!-- Desktop / legacy icon: marbles.svg on a rounded paper square. Keep the two in step. -->
+  <rect x="84" y="84" width="264" height="264" rx="48" fill="#f4ede1"/>
+  <defs>
+    <radialGradient id="b" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#5b97ec"/><stop offset="0.55" stop-color="#1d5fc4"/><stop offset="1" stop-color="#0f3c86"/>
+    </radialGradient>
+    <radialGradient id="r" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#f08a68"/><stop offset="0.55" stop-color="#d2492a"/><stop offset="1" stop-color="#8f2a14"/>
+    </radialGradient>
+  </defs>
+  <line x1="170" y1="250" x2="274" y2="166" stroke="#3a352e" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="226" cy="205" r="13" fill="url(#b)" stroke="#3a352e" stroke-width="3"/>
+  <circle cx="274" cy="166" r="40" fill="url(#r)" stroke="#3a352e" stroke-width="5"/>
+  <ellipse cx="262" cy="150" rx="13" ry="8" fill="#fff" opacity="0.7"/>
+  <circle cx="170" cy="250" r="58" fill="none" stroke="#3a352e" stroke-width="8" stroke-dasharray="22 12"/>
+  <circle cx="170" cy="250" r="46" fill="url(#b)" stroke="#3a352e" stroke-width="5"/>
+  <ellipse cx="155" cy="230" rx="16" ry="10" fill="#fff" opacity="0.7"/>
+</svg>
