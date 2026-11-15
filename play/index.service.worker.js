@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1794760735|971751';
+const CACHE_VERSION = '1794761002|967348';
 /** @type {string} */
 const CACHE_PREFIX = 'Kulechky-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
